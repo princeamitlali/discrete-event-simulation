@@ -39,20 +39,21 @@ def shower():
 
 def leave():
     print("professor leaves home and drives to school at "+strnow())
-    
+    # e1 = sim.sched(meeting1, until=9*3600, repeat_intv=24*3600) # 9:00
+    # e2 = sim.sched(meeting2, until=10*3600, repeat_intv=24*3600) # 10:00
+    # cl = sim.sched(classes, until=11*3600, repeat_intv=24*3600)
     if bool(random.getrandbits(1)):
-        # traffic jam at the first day
+        print("true")
         sim.sched(arrive, offset=2*3600+45*60) # 2 hours and 45 minutes from now
-        # the two meetings are only at the first day
         sim.cancel(e1)
         sim.resched(e2, offset= 3.5*3600) # 11:00
-        #sim.resched(classes, offset= 4.5*3600)
+        sim.resched(cl, offset= 4.5*3600)
     else:
-        # no traffic jam in the following days
+        print("false")
         sim.sched(arrive, offset=45*60) # 45 minutes from now
-        sim.sched(e1)
-        sim.sched(e2)
-        sim.sched(cl)
+        sim.sched(meeting1,offset=90*60)
+        sim.resched(e2,offset=150*60)
+        sim.resched(cl,offset=210*60 )
 
 def arrive():
     print("professor arrives at school at "+strnow())
@@ -90,5 +91,5 @@ sim = simulus.simulator()
 sim.sched(wake_up, until=4*3600, repeat_intv=24*3600) # 4:00
 e1 = sim.sched(meeting1, until=9*3600, repeat_intv=24*3600) # 9:00
 e2 = sim.sched(meeting2, until=10*3600, repeat_intv=24*3600) # 10:00
-cl = sim.sched(classes, until=11*3600)
+cl = sim.sched(classes, until=11*3600, repeat_intv=24*3600)
 sim.run(until=288*3600)
