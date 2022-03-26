@@ -43,13 +43,11 @@ def leave():
     # e2 = sim.sched(meeting2, until=10*3600, repeat_intv=24*3600) # 10:00
     # cl = sim.sched(classes, until=11*3600, repeat_intv=24*3600)
     if bool(random.getrandbits(1)):
-        print("true")
         sim.sched(arrive, offset=2*3600+45*60) # 2 hours and 45 minutes from now
         sim.cancel(e1)
         sim.resched(e2, offset= 3.5*3600) # 11:00
         sim.resched(cl, offset= 4.5*3600)
     else:
-        print("false")
         sim.sched(arrive, offset=45*60) # 45 minutes from now
         sim.sched(meeting1,offset=90*60)
         sim.resched(e2,offset=150*60)
