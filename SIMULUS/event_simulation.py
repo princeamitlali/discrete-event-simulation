@@ -83,9 +83,7 @@ def classes():
             sim.sched(classes_start,i,offset=i*3600+40*60)
         if i >2:
             sim.sched(classes_start,i,offset=i*3600+50*60)
-            
-            
-    
+
 
 sim = simulus.simulator()
 sim.sched(wake_up, until=4*3600, repeat_intv=24*3600) # 4:00
