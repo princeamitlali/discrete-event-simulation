@@ -3,7 +3,7 @@ import simulus
 from time import gmtime, strftime
 import random
 
-
+import time
 
 def strnow():
     return strftime("%H:%M:%S", gmtime(sim.now))
@@ -84,10 +84,11 @@ def classes():
             
             
     
-
+init_time = time.time()
 sim = simulus.simulator()
 sim.sched(wake_up, until=4*3600, repeat_intv=24*3600) # 4:00
 e1 = sim.sched(meeting1, until=9*3600, repeat_intv=24*3600) # 9:00
 e2 = sim.sched(meeting2, until=10*3600, repeat_intv=24*3600) # 10:00
 cl = sim.sched(classes, until=11*3600, repeat_intv=24*3600)
 sim.run(until=288*3600)
+print(time.time() - init_time)

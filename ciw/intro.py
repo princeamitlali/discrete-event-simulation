@@ -1,5 +1,5 @@
 import ciw
-
+import time
 '''
 Arrival Distribution: Time between two consecutive arrivals.
 Service Distribution: Amount of time a customer spends with a server.
@@ -30,7 +30,9 @@ N = ciw.create_network(
     number_of_servers=[1, 1],
 )
 
+init_time = time.time()
 ciw.seed(10)
 Q = ciw.Simulation(N, exact=10)
 Q.simulate_until_max_time(50)
 recs = Q.get_all_records()
+print(time.time() - init_time)
