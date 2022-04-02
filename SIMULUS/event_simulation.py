@@ -81,7 +81,9 @@ def classes():
             sim.sched(classes_start,i,offset=i*3600+40*60)
         if i >2:
             sim.sched(classes_start,i,offset=i*3600+50*60)
-            
+
+
+           
             
     
 init_time = time.time()
