@@ -4,7 +4,7 @@ important imports
 import simpy
 import random
 import statistics
-
+import time
 '''global variable to store wait times'''
 wait_times = []
 
@@ -121,7 +121,6 @@ def main():
     env.run(until=90)
 
     # View the results
-    print(wait_times)
     mins, secs = get_average_wait_time(wait_times)
     print(
         "Running simulation...",
@@ -130,4 +129,6 @@ def main():
 
 
 if __name__ == "__main__":
+    init_time = time.time()
     main()
+    print(time.time() - init_time)
